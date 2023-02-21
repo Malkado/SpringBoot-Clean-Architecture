@@ -3,9 +3,9 @@ package br.com.araujo.cleanarch.core.usecases.implementations;
 import br.com.araujo.cleanarch.core.dataprovider.ICreateCustomer;
 import br.com.araujo.cleanarch.core.dataprovider.IFindAddressByZipCode;
 import br.com.araujo.cleanarch.core.domain.Customer;
-import br.com.araujo.cleanarch.core.usecases.ICreateCustomerUserCase;
+import br.com.araujo.cleanarch.core.usecases.ICreateCustomerUseCase;
 
-public class CreateCustormerUseCaseImpl implements ICreateCustomerUserCase {
+public class CreateCustormerUseCaseImpl implements ICreateCustomerUseCase {
 
    private final IFindAddressByZipCode findAddressByZipCode;
     private  final ICreateCustomer createCustomer;

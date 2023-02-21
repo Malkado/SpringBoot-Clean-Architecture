@@ -1,7 +1,7 @@
 package br.com.araujo.cleanarch.entrypoint.controller;
 
-import br.com.araujo.cleanarch.core.domain.Customer;
-import br.com.araujo.cleanarch.core.usecases.ICreateCustomerUserCase;
+import br.com.araujo.cleanarch.core.usecases.ICreateCustomerUseCase;
+import br.com.araujo.cleanarch.core.usecases.IDeleteCustomerByIdUseCase;
 import br.com.araujo.cleanarch.core.usecases.IFindCustomerByIdUseCase;
 import br.com.araujo.cleanarch.core.usecases.IUpdateCustomerUseCase;
 import br.com.araujo.cleanarch.entrypoint.controller.mapper.ICustomerMapper;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class CustomerController {
 
     @Autowired
-    ICreateCustomerUserCase createCustomerUserCase;
+    ICreateCustomerUseCase createCustomerUserCase;
 
     @Autowired
     IFindCustomerByIdUseCase findCustomerByIdUseCase;
@@ -27,6 +27,9 @@ public class CustomerController {
 
     @Autowired
     IUpdateCustomerUseCase  updateCustomerUseCase;
+
+    @Autowired
+    IDeleteCustomerByIdUseCase deleteCustomerByIdUseCase;
     @PostMapping
     public ResponseEntity<Void> insert(@Valid @RequestBody CustomerRequest customerRequest){
     var customer = customerMapper.toCustomer(customerRequest);
@@ -47,4 +50,11 @@ public class CustomerController {
         updateCustomerUseCase.update(customer,customerRequest.getZipCode());
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable final String id){
+        deleteCustomerByIdUseCase.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

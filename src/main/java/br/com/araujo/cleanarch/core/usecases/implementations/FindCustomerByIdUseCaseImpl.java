@@ -4,9 +4,9 @@ import br.com.araujo.cleanarch.core.dataprovider.IFindCustomerById;
 import br.com.araujo.cleanarch.core.domain.Customer;
 import br.com.araujo.cleanarch.core.usecases.IFindCustomerByIdUseCase;
 
-public class FindCustomerByUseCaseImpl implements IFindCustomerByIdUseCase {
+public class FindCustomerByIdUseCaseImpl implements IFindCustomerByIdUseCase {
     private final IFindCustomerById findCustomerById;
-    public FindCustomerByUseCaseImpl(IFindCustomerById findCustomerById){
+    public FindCustomerByIdUseCaseImpl(IFindCustomerById findCustomerById){
         this.findCustomerById = findCustomerById;
     }
     @Override
